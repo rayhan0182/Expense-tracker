@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/dropmenu"
+        android:title="user"
+        android:icon="@drawable/outline_arrow_drop_down_circle_24"
+        app:showAsAction="ifRoom"
+        >
+
+        <menu>
+
+            <item
+            android:id="@+id/mnu_income"
+            android:title="@string/incom"
+              />
+
+            <item
+                android:id="@+id/mnu_expense"
+                android:title="@string/expensee"
+                />
+        </menu>
+
+
+    </item>
+
+
+</menu>

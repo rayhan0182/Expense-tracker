@@ -1,13 +1,32 @@
 {
   "project_info": {
-    "project_number": "1006099846334",
-    "project_id": "expense-tracker-b27bd",
-    "storage_bucket": "expense-tracker-b27bd.firebasestorage.app"
+    "project_number": "554123759910",
+    "project_id": "expense-tracker-25adf",
+    "storage_bucket": "expense-tracker-25adf.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1006099846334:android:d3f02fee5cef96893f3aef",
+        "mobilesdk_app_id": "1:554123759910:android:4f42ac810248b1b36d71e7",
+        "android_client_info": {
+          "package_name": "com.example.expensetracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu72hEoyCDVmCzn56Foeaf3l7dN9O4A2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554123759910:android:c7269e4bfad06dc16d71e7",
         "android_client_info": {
           "package_name": "com.example.expensetracker.activity"
         }
@@ -15,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBvQlBQltyJ-8g880OZrBEyvFnQMM5h1BU"
+          "current_key": "AIzaSyBu72hEoyCDVmCzn56Foeaf3l7dN9O4A2A"
         }
       ],
       "services": {
