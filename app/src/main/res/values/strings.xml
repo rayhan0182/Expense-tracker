@@ -15,4 +15,6 @@
     <string name="toolbar">toolbar</string>
     <string name="incom">Income</string>
     <string name="expensee">Expense</string>
+    <string name="save">save</string>
+    <string name="text_highlists">Enter Your Monthly Income</string>
 </resources>

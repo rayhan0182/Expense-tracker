@@ -7,6 +7,7 @@
     tools:context=".view.mainview.UseruploadFragment"
     >
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_toolbar"
         android:layout_width="match_parent"
@@ -20,10 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

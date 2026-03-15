@@ -2,28 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-    <item
-        android:id="@+id/dropmenu"
-        android:title="user"
-        android:icon="@drawable/outline_arrow_drop_down_circle_24"
-        app:showAsAction="ifRoom"
-        >
+     <item
+         android:id="@+id/topmenu"
+         android:title="tracker"
+         android:icon="@drawable/outline_arrow_drop_down_circle_24"
+         app:showAsAction="always"
+         >
+     <menu>
 
-        <menu>
+         <item
+            android:id="@+id/menu_income"
+            android:title="Income"
+            android:icon="@drawable/ic_incomeadd"
+          />
 
-            <item
-            android:id="@+id/mnu_income"
-            android:title="@string/incom"
-              />
+         <item
+             android:id="@+id/menu_expense"
+             android:title="Expense"
+             android:icon="@drawable/icon_givingmoney"
+             />
+     </menu>
 
-            <item
-                android:id="@+id/mnu_expense"
-                android:title="@string/expensee"
-                />
-        </menu>
+     </item>
 
-
-    </item>
 
 
 </menu>
