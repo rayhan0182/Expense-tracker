@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
 import com.example.expensetracker.databinding.FragmentUseruploadBinding
 import com.example.expensetracker.view.basefrag.Basefragment
+import com.example.expensetracker.viewmodel.Userincome_vmodel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,6 +26,8 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
     FragmentUseruploadBinding::inflate
 
 ) {
+
+    lateinit var userincomeVmodel: Userincome_vmodel
 
     override fun createuser() {
 
@@ -64,28 +67,35 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
     @SuppressLint("MissingInflatedId", "SuspiciousIndentation")
     private fun showincomedialoge() {
 
-        val dialogeview = layoutInflater.inflate(R.layout.enteruserincome,null)
+       val dialogeinflate = layoutInflater.inflate(R.layout.enteruserincome,null)
 
+       val alertdialoge = android.app.AlertDialog.Builder(requireContext())
 
-        val dialoge = android.app.AlertDialog.Builder(requireContext())
-            .setView(dialogeview)
-            .create()
+           .setView(dialogeinflate)
 
-        val e_text = dialogeview.findViewById<EditText>(R.id.et_amount)
+           .create()
 
-        val btn = dialogeview.findViewById<Button>(R.id.click_btn)
+           val amount = dialogeinflate.findViewById<EditText>(R.id.et_amount)
 
+           val clickbtn = dialogeinflate.findViewById<Button>(R.id.click_btn)
 
-          btn.setOnClickListener {
+           clickbtn.setOnClickListener {
 
-              val income = e_text.text.toString()
+               val useramount = amount.text.toString().toInt()
 
-              Toast.makeText(requireContext(),"Income: $income",Toast.LENGTH_SHORT).show()
+               userincomeVmodel.postuserdata(useramount)
 
-              dialoge.dismiss()
-          }
+               userincomeVmodel.responssetincome.observe(viewLifecycleOwner){it->
 
-        dialoge.show()
+                   Toast.makeText(requireContext(),it.toString(), Toast.LENGTH_LONG).show()
+
+               }
+
+               alertdialoge.dismiss()
+
+           }
+
+        alertdialoge.show()
 
     }
 
