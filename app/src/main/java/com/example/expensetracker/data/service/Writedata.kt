@@ -9,5 +9,7 @@ interface Writedata {
 
     fun writeamount(amount: Int)
 
+    fun getwamount()
+
 
 }

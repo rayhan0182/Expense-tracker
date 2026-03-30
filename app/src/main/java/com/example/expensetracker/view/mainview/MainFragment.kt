@@ -27,11 +27,6 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
             }
 
-
-
         }
-
     }
-
-
 }

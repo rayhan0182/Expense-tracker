@@ -13,8 +13,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
+import com.example.expensetracker.data.repository.Wamntrepo
 import com.example.expensetracker.databinding.FragmentUseruploadBinding
 import com.example.expensetracker.view.basefrag.Basefragment
 import com.example.expensetracker.viewmodel.Userincome_vmodel
@@ -29,12 +31,10 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
     lateinit var userincomeVmodel: Userincome_vmodel
 
+
     override fun createuser() {
 
-
        toplevelmenubar()
-
-
 
     }
 
@@ -83,13 +83,9 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
                val useramount = amount.text.toString().toInt()
 
+               userincomeVmodel = ViewModelProvider.create(this)[Userincome_vmodel::class.java]
+
                userincomeVmodel.postuserdata(useramount)
-
-               userincomeVmodel.responssetincome.observe(viewLifecycleOwner){it->
-
-                   Toast.makeText(requireContext(),it.toString(), Toast.LENGTH_LONG).show()
-
-               }
 
                alertdialoge.dismiss()
 

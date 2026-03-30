@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object Instancefirebase {
 
-
     @Provides
     @Singleton
 
@@ -23,12 +22,12 @@ object Instancefirebase {
     }
 
     @Provides
+
     @Singleton
 
-    fun amountrepo(): Wamntrepo{
+    fun wrepository(): Wamntrepo{
 
-
-
+        return Wamntrepo(firestorefirebase())
 
     }
 
