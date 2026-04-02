@@ -9,7 +9,7 @@ interface Writedata {
 
     fun writeamount(amount: Int)
 
-    fun getwamount()
+    fun getwamount(amount_result:(String?)-> Unit)
 
 
 }

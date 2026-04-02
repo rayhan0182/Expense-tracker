@@ -5,4 +5,7 @@ object Constants {
     const val co_user = "usercollection"
 
     const val do_user = "userdocument"
+
+    const val amount_key = "useramount"
+
 }

@@ -10,10 +10,26 @@ import javax.inject.Inject
 @HiltViewModel
 class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : ViewModel() {
 
+      private val _useramount = MutableLiveData<Int>()
+
+     val useramount: LiveData<Int> = _useramount
+
     fun postuserdata(m_amount: Int){
 
         wamntrepo.writeamount(m_amount)
 
     }
+
+    fun getuseramount(){
+
+      wamntrepo.getwamount {it->
+
+       //  _useramount.postValue(it.)
+
+      }
+
+
+    }
+
 
 }

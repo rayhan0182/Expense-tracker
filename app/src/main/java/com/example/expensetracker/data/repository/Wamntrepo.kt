@@ -13,7 +13,7 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
     override fun writeamount(amount: Int){
 
-        val postdata = hashMapOf("useramount" to amount)
+        val postdata = hashMapOf(Constants.amount_key to amount)
 
       firestore.collection(Constants.co_user)
 
@@ -22,7 +22,7 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
           .set(postdata)
     }
 
-    override fun getwamount() {
+    override fun getwamount(amount_result: (String?) -> Unit) {
 
         firestore.collection(Constants.co_user)
 
@@ -30,11 +30,13 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
             .get().addOnSuccessListener {it->
 
-                Log.d("TAG", "getwamount: Success$it")
+             val uamount = it.getString(Constants.amount_key)
 
-            }.addOnFailureListener {error->
+             amount_result(uamount)
 
-                Log.d("TAG", "getwamount: ${error.message}")
+            }.addOnFailureListener {
+
+               amount_result(null)
 
             }
 
