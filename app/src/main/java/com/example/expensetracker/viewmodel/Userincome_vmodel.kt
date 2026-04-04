@@ -10,9 +10,9 @@ import javax.inject.Inject
 @HiltViewModel
 class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : ViewModel() {
 
-      private val _useramount = MutableLiveData<Int>()
+      private val _useramount = MutableLiveData<String>()
 
-     val useramount: LiveData<Int> = _useramount
+     val useramount: LiveData<String> = _useramount
 
     fun postuserdata(m_amount: Int){
 
@@ -22,14 +22,12 @@ class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : 
 
     fun getuseramount(){
 
-      wamntrepo.getwamount {it->
+      wamntrepo.getwamount {amount->
 
-       //  _useramount.postValue(it.)
+       _useramount.value = amount.toString()?:"0"
 
       }
 
-
     }
-
 
 }

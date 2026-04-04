@@ -35,7 +35,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bakbak_one"
-            android:text="@string/_25000"
             android:paddingLeft="5dp"
             android:textSize="20sp"
             android:layout_marginTop="25dp"

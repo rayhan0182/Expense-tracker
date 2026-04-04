@@ -28,18 +28,17 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
             .document(Constants.do_user)
 
-            .get().addOnSuccessListener {it->
+            .get().addOnSuccessListener {useramount->
 
-             val uamount = it.getString(Constants.amount_key)
+                val useramount = useramount.get(Constants.amount_key).toString()
 
-             amount_result(uamount)
+                amount_result(useramount)
 
             }.addOnFailureListener {
 
                amount_result(null)
 
             }
-
     }
 
 }
