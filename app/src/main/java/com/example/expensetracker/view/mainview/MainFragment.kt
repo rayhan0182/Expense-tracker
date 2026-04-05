@@ -28,13 +28,7 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
         viewmodel.getuseramount()
 
-        viewmodel.useramount.observe(viewLifecycleOwner){amount->
-
-          val jj = amount.toString().toInt()
-
-          binding.iAmount.text = jj.toString()
-
-        }
+        amountshow()
 
         with(binding){
 
@@ -43,6 +37,15 @@ class MainFragment : Basefragment<FragmentMainBinding>(
                 findNavController().navigate(R.id.action_mainFragment_to_useruploadFragment)
 
             }
+
+        }
+    }
+
+    private fun amountshow() {
+
+        viewmodel.useramount.observe(viewLifecycleOwner){amount->
+
+            binding.iAmount.text = amount
 
         }
     }

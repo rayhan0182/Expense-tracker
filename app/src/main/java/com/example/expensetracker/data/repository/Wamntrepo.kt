@@ -24,22 +24,23 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
     override fun getwamount(amount_result: (String?) -> Unit) {
 
-        firestore.collection(Constants.co_user)
 
-            .document(Constants.do_user)
+        firestore.collection(Constants.co_user).document(Constants.do_user)
 
-            .get().addOnSuccessListener {useramount->
+            .get().addOnSuccessListener {it->
 
-                val useramount = useramount.get(Constants.amount_key).toString()
+                val a_data = it.get(Constants.amount_key)
 
-                amount_result(useramount)
+                amount_result(a_data.toString())
 
             }.addOnFailureListener {
 
-               amount_result(null)
-
+                amount_result(null)
             }
+
+
     }
+
 
 }
 
