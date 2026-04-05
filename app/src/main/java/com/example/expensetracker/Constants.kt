@@ -8,4 +8,8 @@ object Constants {
 
     const val amount_key = "useramount"
 
+    const val ex_coll = "ExpenseColl"
+
+    const val ex_docu = "Expensedocument"
+
 }

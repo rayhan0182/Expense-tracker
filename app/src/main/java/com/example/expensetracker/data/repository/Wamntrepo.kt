@@ -1,6 +1,7 @@
 package com.example.expensetracker.data.repository
 import android.util.Log
 import com.example.expensetracker.Constants
+import com.example.expensetracker.data.Epsemodel
 import com.example.expensetracker.data.model.Amount
 import com.example.expensetracker.data.service.Writedata
 import com.google.android.gms.tasks.Task
@@ -37,6 +38,19 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
                 amount_result(null)
             }
+
+
+    }
+
+    override fun getexpenselist(expense: List<Epsemodel>) {
+
+        val datauser = hashMapOf<String, List<Epsemodel>>("userdata" to expense)
+
+        firestore.collection(Constants.ex_coll)
+
+            .document(Constants.do_user)
+
+            .set(datauser)
 
 
     }
