@@ -4,7 +4,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.expensetracker.R
 import com.example.expensetracker.data.Epsemodel
 import com.example.expensetracker.databinding.FragmentUseruploadBinding
@@ -12,6 +11,7 @@ import com.example.expensetracker.syntex
 import com.example.expensetracker.view.basefrag.Basefragment
 import com.example.expensetracker.viewmodel.Userincome_vmodel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.collections.forEach
 
 @AndroidEntryPoint
 class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
@@ -21,6 +21,8 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 ) {
 
     private val userincomeVmodel: Userincome_vmodel by viewModels()
+
+
 
 
     override fun createuser() {
@@ -40,23 +42,9 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
          binding.let {
 
-             val foodd = it.etFood.syntex()
-
-             val medii = it.etMedical.syntex()
-
-             val trav = it.etTravel.syntex()
-
-             val clo = it.etClothers.syntex()
-
-             val trans  = it.etTnsprt.syntex()
-
-             val mobill = it.etBill.syntex()
-
-             val othbill = it.etOthers.syntex()
-
-             val total = foodd.toInt()+medii.toInt()+trav.toInt()+ clo.toInt()+trans.toInt()+mobill.toInt()+othbill.toInt()
-
              userincomeVmodel.getuseramount()
+
+            val total =  sumtiondata(it)
 
             userincomeVmodel.useramount.observe(viewLifecycleOwner){it->
 
@@ -65,20 +53,72 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
                 userincomeVmodel.postuserdata(usertotal)
 
             }
-             val useramount: List<Epsemodel> = listOf(Epsemodel(foodd.toInt(),
-
-                 medii.toInt(),trav.toInt(),clo.toInt(),trans.toInt(),
-
-                 mobill.toInt(),othbill.toInt()
-
-             ) )
-
-             userincomeVmodel.expenseadd(useramount)
 
 
          }
 
+    }
 
+    @SuppressLint("SuspiciousIndentation")
+    private fun sumtiondata(binding1: FragmentUseruploadBinding): Int {
+
+        var additems = 0
+
+
+
+
+        binding1.let {
+
+            val fooditems = it.etFood.syntex().toIntOrNull()
+
+            val mediitems = it.etMedical.syntex().toIntOrNull()
+
+            val travelitems = it.etTravel.syntex().toIntOrNull()
+
+            val transitems = it.etTrans.syntex().toIntOrNull()
+
+            val billitems = it.etBill.syntex().toIntOrNull()
+
+            val cloitems = it.etClo.syntex().toIntOrNull()
+
+            val otheritems = it.etOthers.syntex().toIntOrNull()
+
+
+            val elist: List<Int?> = listOf(fooditems,
+                mediitems,
+                travelitems,
+                transitems,
+                billitems,
+                cloitems,
+                otheritems
+                )
+
+            val itemsuser: MutableList<Epsemodel> = mutableListOf()
+
+
+            elist.forEach {it->
+
+                it?.let { it1->
+
+                     additems+=it1
+                }
+
+
+            }
+
+            val mdata = Epsemodel(fooditems,mediitems,
+                travelitems,
+                transitems,
+                billitems,
+                cloitems,
+                otheritems)
+
+            itemsuser.add(mdata)
+
+            userincomeVmodel.expenseadd(itemsuser)
+        }
+
+         return  additems
     }
 
     private fun toplevelmenubar() {

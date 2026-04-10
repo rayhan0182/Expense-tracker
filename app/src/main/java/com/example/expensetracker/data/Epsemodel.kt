@@ -8,11 +8,11 @@ data class Epsemodel(
 
     val trav: Int? = null,
 
+    val trans:Int? = null,
+
+    val bill:Int? = null,
+
     val clo:Int? = null,
 
-    val trns: Int? = null,
-
-    val mbill:Int? = null,
-
-    val others:Int? = null
+    val others: Int? = null
 )

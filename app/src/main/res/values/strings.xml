@@ -18,14 +18,15 @@
     <string name="save">save</string>
     <string name="text_highlists">Enter Your Monthly Income</string>
     <string name="food_items">Food</string>
-    <string name="category">Category</string>
+    <string name="travel">Travel</string>
+    <string name="trans">Transport</string>
     <string name="amount">Amount</string>
-    <string name="food">Food</string>
-    <string name="medical">Medical</string>
-    <string name="travelling">travelling</string>
-    <string name="clothers">Clothers</string>
+    <string name="bill">Mobile Bill</string>
+    <string name="clo">Clothers</string>
     <string name="transport">Transport</string>
     <string name="mobile_bill">Mobile Bill</string>
     <string name="others">others</string>
     <string name="sav">Save</string>
+    <string name="medical">Medical</string>
+    <string name="category">Category</string>
 </resources>

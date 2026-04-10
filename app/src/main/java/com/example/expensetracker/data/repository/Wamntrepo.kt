@@ -1,14 +1,11 @@
 package com.example.expensetracker.data.repository
-import android.util.Log
+import android.annotation.SuppressLint
 import com.example.expensetracker.Constants
 import com.example.expensetracker.data.Epsemodel
-import com.example.expensetracker.data.model.Amount
 import com.example.expensetracker.data.service.Writedata
-import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.local.LruGarbageCollector
-import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.text.get
 
 class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Writedata {
 
@@ -23,8 +20,7 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
           .set(postdata)
     }
 
-    override fun getwamount(amount_result: (String?) -> Unit) {
-
+    override fun getamount(result: (String) -> Unit) {
 
         firestore.collection(Constants.co_user).document(Constants.do_user)
 
@@ -32,29 +28,30 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
                 val a_data = it.get(Constants.amount_key)
 
-                amount_result(a_data.toString())
+                result(a_data.toString())
 
-            }.addOnFailureListener {
+            }.addOnFailureListener {error->
 
-                amount_result(null)
+                result(error.toString())
+
             }
 
 
     }
 
-    override fun getexpenselist(expense: List<Epsemodel>) {
+    @SuppressLint("SuspiciousIndentation")
+    override fun getexpenselist(expense: MutableList<Epsemodel>) {
 
-        val datauser = hashMapOf<String, List<Epsemodel>>("userdata" to expense)
+      val euserdata = hashMapOf<String, MutableList<Epsemodel>>(Constants.ex_keyname to expense)
 
-        firestore.collection(Constants.ex_coll)
+         firestore.collection(Constants.ex_coll)
 
-            .document(Constants.do_user)
-
-            .set(datauser)
-
-
+             .document(Constants.ex_docu).set(euserdata)
     }
-
-
 }
+
+
+
+
+
 

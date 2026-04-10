@@ -2,10 +2,8 @@ package com.example.expensetracker.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.expensetracker.Constants
 import com.example.expensetracker.data.Epsemodel
 import com.example.expensetracker.data.repository.Wamntrepo
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
@@ -23,17 +21,18 @@ class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : 
 
     fun getuseramount(){
 
-      wamntrepo.getwamount {amount->
 
-       _useramount.value = amount.toString()?:"0"
+        wamntrepo.getamount { it->
 
-      }
+        _useramount.value  = it
+
+        }
 
     }
 
-    fun expenseadd(model: List<Epsemodel>){
+    fun expenseadd(userexpense: MutableList<Epsemodel>){
 
-        wamntrepo.getexpenselist(model)
+        wamntrepo.getexpenselist(userexpense)
 
 
     }

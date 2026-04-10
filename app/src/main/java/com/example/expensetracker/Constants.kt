@@ -12,4 +12,6 @@ object Constants {
 
     const val ex_docu = "Expensedocument"
 
+    const val ex_keyname = "Expenselist"
+
 }
