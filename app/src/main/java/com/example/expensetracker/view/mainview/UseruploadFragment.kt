@@ -87,8 +87,6 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
                 otheritems
                 )
 
-
-
             elist.forEach {it->
 
                 it?.let { it1->
