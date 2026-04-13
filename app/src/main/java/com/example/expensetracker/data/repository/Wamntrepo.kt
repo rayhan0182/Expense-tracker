@@ -1,19 +1,21 @@
 package com.example.expensetracker.data.repository
 import android.annotation.SuppressLint
 import com.example.expensetracker.Constants
-import com.example.expensetracker.data.Epsemodel
+import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.data.service.Writedata
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 import kotlin.text.get
 
 class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Writedata {
 
-    override fun writeamount(amount: Int){
+    override fun writeamount(amount: Int): Task<Void> {
 
-        val postdata = hashMapOf(Constants.amount_key to amount)
+        val postdata = mapOf(Constants.amount_key to amount)
 
-      firestore.collection(Constants.co_user)
+     return firestore.collection(Constants.co_user)
 
             .document(Constants.do_user)
 
@@ -35,18 +37,17 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
                 result(error.toString())
 
             }
-
-
     }
 
-    @SuppressLint("SuspiciousIndentation")
-    override fun getexpenselist(expense: MutableList<Epsemodel>) {
 
-      val euserdata = hashMapOf<String, MutableList<Epsemodel>>(Constants.ex_keyname to expense)
+    override fun getexpenselist(expense:Epsemodel): Task<Void> {
 
-         firestore.collection(Constants.ex_coll)
+        val userdata = mapOf(Constants.ex_keyname to FieldValue.arrayUnion(expense))
 
-             .document(Constants.ex_docu).set(euserdata)
+     return firestore.collection(Constants.ex_coll)
+            .document(Constants.ex_docu)
+            .update(userdata)
+
     }
 }
 

@@ -43,7 +43,7 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
     private fun amountshow() {
 
-        viewmodel.useramount.observe(viewLifecycleOwner){amount->
+        viewmodel.get_amount.observe(viewLifecycleOwner){amount->
 
             binding.iAmount.text = amount
 

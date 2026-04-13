@@ -4,13 +4,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
-import com.example.expensetracker.data.Epsemodel
+import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.databinding.FragmentUseruploadBinding
 import com.example.expensetracker.syntex
 import com.example.expensetracker.view.basefrag.Basefragment
 import com.example.expensetracker.viewmodel.Userincome_vmodel
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.expensetracker.data.DataState
 import kotlin.collections.forEach
 
 @AndroidEntryPoint
@@ -21,9 +23,6 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 ) {
 
     private val userincomeVmodel: Userincome_vmodel by viewModels()
-
-
-
 
     override fun createuser() {
 
@@ -46,7 +45,7 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
             val total =  sumtiondata(it)
 
-            userincomeVmodel.useramount.observe(viewLifecycleOwner){it->
+            userincomeVmodel.get_amount.observe(viewLifecycleOwner){it->
 
                 val usertotal = it.toInt() - total
 
@@ -54,9 +53,7 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
             }
 
-
          }
-
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -64,24 +61,21 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
         var additems = 0
 
-
-
-
         binding1.let {
 
-            val fooditems = it.etFood.syntex().toIntOrNull()
+            val fooditems = it.etFood.syntex().toIntOrNull()?:0
 
-            val mediitems = it.etMedical.syntex().toIntOrNull()
+            val mediitems = it.etMedical.syntex().toIntOrNull()?:0
 
-            val travelitems = it.etTravel.syntex().toIntOrNull()
+            val travelitems = it.etTravel.syntex().toIntOrNull()?:0
 
-            val transitems = it.etTrans.syntex().toIntOrNull()
+            val transitems = it.etTrans.syntex().toIntOrNull()?:0
 
-            val billitems = it.etBill.syntex().toIntOrNull()
+            val billitems = it.etBill.syntex().toIntOrNull()?:0
 
-            val cloitems = it.etClo.syntex().toIntOrNull()
+            val cloitems = it.etClo.syntex().toIntOrNull()?:0
 
-            val otheritems = it.etOthers.syntex().toIntOrNull()
+            val otheritems = it.etOthers.syntex().toIntOrNull()?:0
 
 
             val elist: List<Int?> = listOf(fooditems,
@@ -93,7 +87,6 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
                 otheritems
                 )
 
-            val itemsuser: MutableList<Epsemodel> = mutableListOf()
 
 
             elist.forEach {it->
@@ -102,23 +95,45 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
                      additems+=it1
                 }
+            }
+
+            val mdata = Epsemodel(fooditems,
+                mediitems,travelitems,
+                transitems,
+                billitems,
+                cloitems,
+                otheritems
+               )
+
+            if (it.etFood.syntex().isEmpty()
+
+                && it.etMedical.syntex().isEmpty() && it.etTravel.syntex().isEmpty()
+
+                && it.etTrans.syntex().isEmpty() && it.etClo.syntex().isEmpty()
+
+                && it.etBill.syntex().isEmpty() && it.etOthers.syntex().isEmpty()){
+
+                Toast.makeText(requireContext(),"No Amount found", Toast.LENGTH_LONG).show()
 
 
             }
 
-            val mdata = Epsemodel(fooditems,mediitems,
-                travelitems,
-                transitems,
-                billitems,
-                cloitems,
-                otheritems)
+            else{
+                createdatauser(mdata)
+            }
 
-            itemsuser.add(mdata)
 
-            userincomeVmodel.expenseadd(itemsuser)
         }
 
          return  additems
+    }
+
+    private fun createdatauser(mdata: Epsemodel) {
+
+        userincomeVmodel.expenseadd(mdata)
+
+        userrespons()
+
     }
 
     private fun toplevelmenubar() {
@@ -168,11 +183,43 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
                userincomeVmodel.postuserdata(useramount)
 
+               userrespons()
+
                alertdialoge.dismiss()
 
            }
 
         alertdialoge.show()
+
+    }
+
+    private fun userrespons() {
+
+        userincomeVmodel.user_respons.observe(viewLifecycleOwner){it->
+
+            when(it){
+                is DataState.Error->{
+
+                    Toast.makeText(context,"${it.massage}", Toast.LENGTH_SHORT).show()
+
+                }
+                is DataState.Loading->{
+
+                    Toast.makeText(context,"Loading...", Toast.LENGTH_SHORT).show()
+
+                }
+                is DataState.Success->{
+
+                    Toast.makeText(context,"Successfully Create", Toast.LENGTH_LONG).show()
+
+                    findNavController().navigate(R.id.action_useruploadFragment_to_mainFragment)
+
+
+                }
+            }
+
+
+        }
 
     }
 
