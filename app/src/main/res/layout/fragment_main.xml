@@ -21,21 +21,20 @@
             android:id="@+id/t_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/bakbak_one"
             android:text="@string/income"
             android:textSize="20sp"
-            android:layout_marginTop="25dp"
-            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/i_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bakbak_one"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:textSize="20sp"
             android:layout_marginTop="25dp"
             app:layout_constraintStart_toEndOf="@id/t_income"
@@ -55,7 +54,7 @@
             />
 
         <TextView
-            android:id="@+id/e_amount"
+            android:id="@+id/et_examount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bakbak_one"
@@ -74,7 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/alexandria_semibold"
-        android:text="@string/today"
+        android:text="Expense Items"
         android:textSize="18sp"
         android:background="#F5F9DD"
         android:textColor="#829458"
@@ -90,8 +89,9 @@
         android:id="@+id/rc"
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        tools:listitem="@layout/user_itemslist"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/today"
         android:layout_marginTop="5dp"
         />

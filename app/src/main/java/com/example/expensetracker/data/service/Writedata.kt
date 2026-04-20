@@ -8,9 +8,15 @@ interface Writedata {
 
     fun writeamount(amount: Int): Task<Void>
 
+   fun postexpenseamount(e_amount: Int?)
+
+   fun getexpenseamount(eresult:(String)-> Unit)
+
     fun getamount(result:(String)-> Unit)
 
-    fun getexpenselist(expense: Epsemodel): Task<Void>
+    fun postexpenselist(expense: Epsemodel): Task<Void>
+
+    fun getexpenselist(result:(List<Epsemodel>)-> Unit)
 
 
 }

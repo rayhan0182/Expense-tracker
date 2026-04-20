@@ -3,9 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="#785696"
+    android:backgroundTint="#135878"
     android:elevation="10dp"
-    android:layout_marginHorizontal="50dp"
+    android:layout_marginHorizontal="20dp"
     android:layout_marginTop="25dp"
     app:cardCornerRadius="6dp"
     >
@@ -13,16 +13,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+
         >
+        
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="01/05/2026"
+            android:textStyle="italic"
+            android:textColor="#0DD8C7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/food_lay"
+
+            />
 
          <androidx.constraintlayout.widget.ConstraintLayout
              android:id="@+id/food_lay"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
              app:layout_constraintTop_toTopOf="parent"
-             android:orientation="horizontal"
+             android:layout_marginTop="30dp"
              >
 
 
@@ -30,23 +44,24 @@
                  android:id="@+id/t_food"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
-                 android:text="Food frd"
-                 android:textSize="12sp"
+                 android:text="Food"
+                 android:textSize="14sp"
                  android:textColor="@color/white"
                  android:textStyle="bold"
-                 android:layout_marginLeft="50dp"
+                 android:layout_marginLeft="65dp"
                  app:layout_constraintStart_toStartOf="parent"
                  app:layout_constraintTop_toTopOf="parent"
                  />
 
              <TextView
+                 android:id="@+id/et_food"
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:text="2600"
-                 android:textSize="12sp"
+                 android:textSize="14sp"
                  android:textColor="@color/white"
                  android:textStyle="bold"
-                 android:layout_marginLeft="220dp"
+                 android:layout_marginLeft="250dp"
                  app:layout_constraintStart_toEndOf="@id/t_food"
                  app:layout_constraintTop_toTopOf="parent"
 
@@ -70,10 +85,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Medical"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -83,10 +99,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="2700"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toEndOf="@id/t_medi"
                 app:layout_constraintTop_toTopOf="parent"
 
@@ -109,10 +126,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Travel"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -122,10 +140,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="3000"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="250dp"
                 app:layout_constraintStart_toEndOf="@id/t_travel"
                 app:layout_constraintTop_toTopOf="parent"
 
@@ -147,11 +166,12 @@
                 android:id="@+id/t_transport"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
                 android:text="transport"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
+                android:layout_marginTop="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -160,10 +180,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="14000"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="250dp"
                 app:layout_constraintStart_toEndOf="@id/t_transport"
                 app:layout_constraintTop_toTopOf="parent"
 
@@ -187,10 +208,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Mobile Bill"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -200,10 +222,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="200"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="250dp"
                 app:layout_constraintStart_toEndOf="@id/t_bill"
                 app:layout_constraintTop_toTopOf="parent"
 
@@ -226,10 +249,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Clothers"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -239,10 +263,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="200"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="250dp"
                 app:layout_constraintStart_toEndOf="@id/t_clo"
                 app:layout_constraintTop_toTopOf="parent"
 
@@ -265,12 +290,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Others"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:paddingLeft="50dp"
+                android:paddingLeft="65dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:paddingBottom="5dp"
                 />
 
             <TextView
@@ -278,13 +305,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="1900"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="250dp"
                 app:layout_constraintStart_toEndOf="@id/t_others"
                 app:layout_constraintTop_toTopOf="parent"
-
+                android:paddingBottom="5dp"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

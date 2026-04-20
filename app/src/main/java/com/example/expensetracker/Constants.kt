@@ -14,4 +14,8 @@ object Constants {
 
     const val ex_keyname = "Expenselist"
 
+    const val postex_docu = "Expenseamount"
+
+    const val post_ex_keyname = "totalexpense"
+
 }

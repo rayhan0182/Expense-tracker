@@ -1,6 +1,6 @@
 package com.example.expensetracker.data
 
-sealed class DataState<Int>(
+sealed class DataState<T>(
 
     var massage: String? = null,
 
@@ -10,7 +10,7 @@ sealed class DataState<Int>(
 
     class Loading<T>(): DataState<T>()
 
-    class Success<T>(s_massage:T?): DataState<T>(udata = s_massage)
+    class Success<T>(s_massage: Int?): DataState<T>(udata = s_massage)
 
     class Error<T>(massag: String?): DataState<T>(massag)
 }

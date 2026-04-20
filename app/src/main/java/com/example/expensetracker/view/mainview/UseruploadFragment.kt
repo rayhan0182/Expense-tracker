@@ -1,8 +1,11 @@
 package com.example.expensetracker.view.mainview
 import android.annotation.SuppressLint
+import android.os.Build
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
@@ -13,6 +16,9 @@ import com.example.expensetracker.view.basefrag.Basefragment
 import com.example.expensetracker.viewmodel.Userincome_vmodel
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.expensetracker.data.DataState
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import kotlin.collections.forEach
 
 @AndroidEntryPoint
@@ -24,6 +30,7 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
     private val userincomeVmodel: Userincome_vmodel by viewModels()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun createuser() {
 
        toplevelmenubar()
@@ -36,26 +43,21 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun userexpenseadd() {
 
 
          binding.let {
 
-             userincomeVmodel.getuseramount()
+            val total = sumtiondata(it)
 
-            val total =  sumtiondata(it)
-
-            userincomeVmodel.get_amount.observe(viewLifecycleOwner){it->
-
-                val usertotal = it.toInt() - total
-
-                userincomeVmodel.postuserdata(usertotal)
-
-            }
-
+            userincomeVmodel.total_expense(total)
+             
          }
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SuspiciousIndentation")
     private fun sumtiondata(binding1: FragmentUseruploadBinding): Int {
 
@@ -95,7 +97,11 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
                 }
             }
 
-            val mdata = Epsemodel(fooditems,
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+
+            val date = sdf.format(Date())
+
+            val mdata = Epsemodel(date,fooditems,
                 mediitems,travelitems,
                 transitems,
                 billitems,
@@ -112,15 +118,11 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
                 && it.etBill.syntex().isEmpty() && it.etOthers.syntex().isEmpty()){
 
                 Toast.makeText(requireContext(),"No Amount found", Toast.LENGTH_LONG).show()
-
-
             }
 
             else{
                 createdatauser(mdata)
             }
-
-
         }
 
          return  additems
@@ -131,7 +133,6 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
         userincomeVmodel.expenseadd(mdata)
 
         userrespons()
-
     }
 
     private fun toplevelmenubar() {
@@ -178,8 +179,10 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
            clickbtn.setOnClickListener {
 
                val useramount = amount.text.toString().toInt()
-
+               
                userincomeVmodel.postuserdata(useramount)
+
+               userincomeVmodel.total_expense(0)
 
                userrespons()
 
@@ -215,8 +218,6 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
                 }
             }
-
-
         }
 
     }

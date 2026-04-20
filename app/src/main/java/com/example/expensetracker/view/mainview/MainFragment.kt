@@ -1,6 +1,7 @@
 package com.example.expensetracker.view.mainview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
+import com.example.expensetracker.Rc.Adapter
+import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.databinding.FragmentMainBinding
 import com.example.expensetracker.view.basefrag.Basefragment
 import com.example.expensetracker.viewmodel.Userincome_vmodel
@@ -26,9 +29,9 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
     override fun createuser() {
 
-        viewmodel.getuseramount()
+         items_show()
 
-        amountshow()
+         observe()
 
         with(binding){
 
@@ -41,13 +44,48 @@ class MainFragment : Basefragment<FragmentMainBinding>(
         }
     }
 
-    private fun amountshow() {
+    private fun observe() {
 
-        viewmodel.get_amount.observe(viewLifecycleOwner){amount->
+        with(binding){
 
-            binding.iAmount.text = amount
+            viewmodel.getuseramount()
+
+            viewmodel.get_amount_livedata.observe(viewLifecycleOwner){amount->
+
+                iAmount.text = amount.toString()
+            }
+
+            viewmodel.get_total_expense()
+
+            viewmodel.get_expense_amount.observe(viewLifecycleOwner){userdata->
+
+                userdata?.let {
+
+                    with(binding){
+
+                        etExamount.text = it
+
+                    }
+
+                }
+            }
+
 
         }
+    }
+
+    private fun items_show() {
+
+        viewmodel.get_expense_list()
+
+        viewmodel.itemslist.observe(viewLifecycleOwner){it->
+
+           val uadapter = Adapter(it)
+
+           binding.rc.adapter = uadapter
+
+        }
+
     }
 
 

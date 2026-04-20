@@ -1,13 +1,14 @@
 package com.example.expensetracker.data.repository
-import android.annotation.SuppressLint
+import android.util.Log
 import com.example.expensetracker.Constants
+import com.example.expensetracker.Constants.ex_keyname
 import com.example.expensetracker.data.model.Epsemodel
+import com.example.expensetracker.data.model.ExpenseWrapper
 import com.example.expensetracker.data.service.Writedata
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
-import kotlin.text.get
 
 class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Writedata {
 
@@ -19,35 +20,79 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
             .document(Constants.do_user)
 
-          .set(postdata)
+         .set(postdata)
     }
 
-    override fun getamount(result: (String) -> Unit) {
 
-        firestore.collection(Constants.co_user).document(Constants.do_user)
 
-            .get().addOnSuccessListener {it->
+    override fun postexpenseamount(e_amount: Int?) {
 
-                val a_data = it.get(Constants.amount_key)
+        firestore.collection(Constants.co_user)
 
-                result(a_data.toString())
+            .document(Constants.postex_docu)
+
+            .update(Constants.post_ex_keyname,e_amount)
+
+    }
+    override fun getexpenseamount(eresult: (String)-> Unit) {
+
+        firestore.collection(Constants.co_user)
+
+            .document(Constants.postex_docu).get().addOnSuccessListener {data->
+
+                val amountdata = data.get(Constants.post_ex_keyname)
+
+               eresult(amountdata.toString())
 
             }.addOnFailureListener {error->
 
-                result(error.toString())
+                eresult(error.toString())
 
             }
     }
 
+    override fun getamount(result:(String)-> Unit) {
 
-    override fun getexpenselist(expense:Epsemodel): Task<Void> {
+        firestore.collection(Constants.co_user).document(Constants.do_user)
 
-        val userdata = mapOf(Constants.ex_keyname to FieldValue.arrayUnion(expense))
+            .get().addOnSuccessListener {documentSnapshot ->
+
+                val amount = documentSnapshot.get(Constants.amount_key)
+
+                result(amount.toString())
+
+            }.addOnFailureListener {error->
+
+                result(error.toString())
+            }
+    }
+
+    override fun postexpenselist(expense:Epsemodel): Task<Void> {
+
+        val userdata = mapOf(ex_keyname to FieldValue.arrayUnion(expense))
 
      return firestore.collection(Constants.ex_coll)
             .document(Constants.ex_docu)
             .update(userdata)
 
+    }
+
+    override fun getexpenselist(result: (List<Epsemodel>) -> Unit) {
+
+        firestore.collection(Constants.ex_coll).document(Constants.ex_docu)
+
+            .get().addOnSuccessListener { documentSnapshot ->
+
+           val list =  documentSnapshot.toObject(ExpenseWrapper::class.java)?.Expenselist?:emptyList()
+
+                result(list)
+
+
+            }.addOnFailureListener {
+
+              result(emptyList())
+
+            }
     }
 }
 

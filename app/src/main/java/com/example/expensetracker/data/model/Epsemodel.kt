@@ -1,6 +1,10 @@
 package com.example.expensetracker.data.model
 
+import java.util.Date
+
 data class Epsemodel(
+
+    var date: String? = null,
 
     var food:Int? = null,
 
