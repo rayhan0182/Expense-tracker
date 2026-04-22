@@ -2,6 +2,7 @@ package com.example.expensetracker
 
 import com.example.expensetracker.data.repository.Wamntrepo
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,7 +32,10 @@ object Instancefirebase {
 
     }
 
+    fun cloudemessaging(): FirebaseMessaging{
 
+       return  FirebaseMessaging.getInstance()
 
+    }
 
 }

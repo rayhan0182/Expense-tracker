@@ -84,9 +84,9 @@ class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo,
 
             wamntrepo.getexpenseamount {it->
 
-                val jj = it.toInt() + expense_add
+                var count = it.toInt() + expense_add
 
-                wamntrepo.postexpenseamount(jj)
+                wamntrepo.postexpenseamount(count)
 
             }
 
