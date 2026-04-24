@@ -1,5 +1,6 @@
 package com.example.expensetracker.view.mainview
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.widget.Button
@@ -9,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.expensetracker.R
+import com.example.expensetracker.activity.MainActivity
 import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.databinding.FragmentUseruploadBinding
 import com.example.expensetracker.syntex
@@ -213,7 +215,7 @@ class UseruploadFragment : Basefragment<FragmentUseruploadBinding>(
 
                     Toast.makeText(context,"Successfully Create", Toast.LENGTH_LONG).show()
 
-                    findNavController().navigate(R.id.action_useruploadFragment_to_mainFragment)
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
 
 
                 }

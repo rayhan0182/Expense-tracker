@@ -19,4 +19,5 @@ interface Writedata {
     fun getexpenselist(result:(List<Epsemodel>)-> Unit)
 
 
+
 }

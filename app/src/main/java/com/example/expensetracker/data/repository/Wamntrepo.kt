@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
 
-class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Writedata {
+class Wamntrepo @Inject constructor(private val firestore: FirebaseFirestore): Writedata {
 
     override fun writeamount(amount: Int): Task<Void> {
 
@@ -94,6 +94,8 @@ class Wamntrepo @Inject constructor(private val firestore:FirebaseFirestore): Wr
 
             }
     }
+
+
 }
 
 

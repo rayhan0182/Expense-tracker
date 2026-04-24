@@ -1,8 +1,11 @@
 package com.example.expensetracker.viewmodel
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.expensetracker.activity.MainActivity
 import com.example.expensetracker.data.DataState
 import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.data.repository.Wamntrepo
@@ -11,9 +14,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 @HiltViewModel
 class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo,
-    
-    private val firestore: FirebaseFirestore
-    
+
     ) : ViewModel() {
 
       private val _user_respons = MutableLiveData<DataState<Int>>()
@@ -65,7 +66,6 @@ class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo,
         }
     }
 
-
     fun get_expense_list(){
 
         wamntrepo.getexpenselist { it->
@@ -74,42 +74,32 @@ class Userincome_vmodel @Inject constructor(private val wamntrepo: Wamntrepo,
 
         }
     }
+    @SuppressLint("SuspiciousIndentation")
     fun total_expense(expense_add: Int){
 
         if (expense_add<1){
 
             wamntrepo.postexpenseamount(expense_add)
 
-        }else{
+        }else {
 
-            wamntrepo.getexpenseamount {it->
+            wamntrepo.getexpenseamount { it ->
 
-                var count = it.toInt() + expense_add
+                val count = it.toInt() + expense_add
 
-                wamntrepo.postexpenseamount(count)
+                    wamntrepo.postexpenseamount(count)
 
             }
 
+             }
         }
-
-
-
-
-
-    }
-
     fun get_total_expense(){
 
          wamntrepo.getexpenseamount { it->
 
          _get_expense_amount.value = it
 
-
-
          }
-
     }
-
-
 
 }
