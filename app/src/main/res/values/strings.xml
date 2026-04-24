@@ -29,4 +29,6 @@
     <string name="sav">Save</string>
     <string name="medical">Medical</string>
     <string name="category">Category</string>
+    <string name="sort_high_to_low">Sort:High to Low</string>
+    <string name="date_old_to_new">Date:Old to New</string>
 </resources>

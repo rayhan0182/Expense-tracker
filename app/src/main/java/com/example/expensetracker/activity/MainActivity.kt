@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
                   if (expense.toInt()>amount.toInt()){
 
-                      shownotification("WARNING","your monthly income almost finished")
+                      shownotification("Budget Limit Reached","Monthly income exhausted.")
 
                   }
 
@@ -86,12 +86,8 @@ class MainActivity : AppCompatActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-            val title = "Notification Alert"
-
             val channel = NotificationChannel("Notify", title,
                 NotificationManager.IMPORTANCE_HIGH)
-
-           channel.description = "description here"
 
             val manager = context.getSystemService(NotificationManager::class.java)
 
