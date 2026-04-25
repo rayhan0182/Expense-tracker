@@ -85,7 +85,9 @@ class Wamntrepo @Inject constructor(private val firestore: FirebaseFirestore): W
 
            val list =  documentSnapshot.toObject(ExpenseWrapper::class.java)?.Expenselist?:emptyList()
 
-                result(list)
+             val items =   list.reversed()
+
+                result(items)
 
 
             }.addOnFailureListener {

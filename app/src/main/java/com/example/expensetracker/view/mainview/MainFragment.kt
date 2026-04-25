@@ -27,7 +27,11 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
     private val viewmodel: Userincome_vmodel by viewModels()
 
+
+
     override fun createuser() {
+
+        menufilter()
 
          items_show()
 
@@ -42,6 +46,16 @@ class MainFragment : Basefragment<FragmentMainBinding>(
             }
 
         }
+    }
+
+    private fun menufilter() {
+
+
+
+
+
+
+
     }
 
     private fun observe() {
