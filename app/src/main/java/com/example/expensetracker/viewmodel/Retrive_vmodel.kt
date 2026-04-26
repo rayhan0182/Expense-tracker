@@ -18,7 +18,9 @@ import kotlin.let
 @HiltViewModel
 class Retrive_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : ViewModel() {
 
+       private val _sortitems: MutableLiveData<List<Epsemodel>> = MutableLiveData()
 
+        val sortitems: LiveData<List<Epsemodel>> = _sortitems
 
     fun itemsdata(){
 
@@ -26,15 +28,15 @@ class Retrive_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : Vie
 
             val list = elist
 
-            val sorteddata = list.sortedBy { it.food!!+it.med!! + it.trav!!
+            val sortdata = list.sortedBy { it.food!!+it.med!! + it.trav!!
 
                 +it.trans!! + it.bill!!+it.clo!! + it.others!! }.reversed()
 
-
-            val adapteruser = Adapter(sorteddata)
-
+            _sortitems.value = sortdata
 
         }
+
+
 
     }
 

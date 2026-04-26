@@ -15,6 +15,7 @@ import com.example.expensetracker.Rc.Adapter
 import com.example.expensetracker.data.model.Epsemodel
 import com.example.expensetracker.databinding.FragmentMainBinding
 import com.example.expensetracker.view.basefrag.Basefragment
+import com.example.expensetracker.viewmodel.Retrive_vmodel
 import com.example.expensetracker.viewmodel.Userincome_vmodel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,17 +28,17 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
     private val viewmodel: Userincome_vmodel by viewModels()
 
-
+    private val datashort: Retrive_vmodel by viewModels()
 
     override fun createuser() {
 
         menufilter()
 
-         items_show()
+        items_show()
 
-         observe()
+        observe()
 
-        with(binding){
+        with(binding) {
 
             clickBtn.setOnClickListener {
 
@@ -47,15 +48,40 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
         }
     }
-
     private fun menufilter() {
 
+        binding.dropSortdata.setOnMenuItemClickListener() { menuItem ->
+
+            when (menuItem.itemId) {
+
+                R.id.highlow -> {
+
+                    datashort.itemsdata()
+
+                    datashort.sortitems.observe(viewLifecycleOwner){data->
+
+                       val adapteruser = Adapter(data)
+
+                        binding.rc.adapter = adapteruser
+
+                    }
+
+                    true
+
+                }
+
+                R.id.date -> {
+
+                    true
+
+                }
 
 
+                else -> false
+            }
 
 
-
-
+        }
     }
 
     private fun observe() {
