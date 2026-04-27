@@ -22,6 +22,10 @@ class Retrive_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : Vie
 
         val sortitems: LiveData<List<Epsemodel>> = _sortitems
 
+    private val _sortdate: MutableLiveData<List<Epsemodel>> = MutableLiveData()
+
+    val sortdate: LiveData<List<Epsemodel>> = _sortdate
+
     fun itemsdata(){
 
         wamntrepo.getexpenselist { elist->
@@ -33,12 +37,19 @@ class Retrive_vmodel @Inject constructor(private val wamntrepo: Wamntrepo) : Vie
                 +it.trans!! + it.bill!!+it.clo!! + it.others!! }.reversed()
 
             _sortitems.value = sortdata
-
         }
-
-
-
     }
 
+    fun sortdate(){
+
+        wamntrepo.getexpenselist { elist->
+
+            val list = elist.reversed()
+
+            _sortdate.value = list
+
+
+        }
+    }
 
 }

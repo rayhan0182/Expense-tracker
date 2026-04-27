@@ -72,6 +72,16 @@ class MainFragment : Basefragment<FragmentMainBinding>(
 
                 R.id.date -> {
 
+                    datashort.sortdate()
+
+                    datashort.sortdate.observe(viewLifecycleOwner){data->
+
+                        val adapteruser = Adapter(data)
+
+                        binding.rc.adapter = adapteruser
+
+                    }
+
                     true
 
                 }
