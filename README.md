@@ -18,7 +18,7 @@ Display the remaining balance calculated from total income and expenses.
 
 - # Screenshots
 <img src="pngresize.png" width="250"/>
-<img src="pngresizehome2.png" width="250"/>
+<img src="pngresize2.png" width="250"/>
 
   # Installation
 1. Clone this repository  
