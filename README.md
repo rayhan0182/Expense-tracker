@@ -17,8 +17,8 @@ Display the remaining balance calculated from total income and expenses.
 - MVVM Architecture
 
 - # Screenshots
-<img src="resizegeminicreated.png" width="250"/>
 <img src="pngresize2.png" width="250"/>
+<img src="resizegeminicreated.png" width="250"/>
 
   # Installation
 1. Clone this repository  
