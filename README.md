@@ -17,7 +17,7 @@ Firebase Firestore
 
 # Architecture Components
 
-https://developer.android.com/reference/androidx/leanback/app/BaseFragment
+[BaseFragment Docs](https://developer.android.com/reference/androidx/leanback/app/BaseFragment)
 
 
 Efficiently track and manage all user expenses.
