@@ -1,4 +1,6 @@
-#Introduction
+<img src="home&add.png" width="250"/>
+
+#Introduction  
 
 # A simple and efficient expense tracking app that enables users to manage their daily and monthly spending
 
@@ -17,8 +19,17 @@ Firebase Firestore
 
 # Architecture Components
 
+[ViewModel Docs](https://developer.android.com/topic/libraries/architecture/viewmodel)
+
+[LiveData Docs](https://developer.android.com/topic/libraries/architecture/livedata)
+
+[Data Binding Docs](https://developer.android.com/topic/libraries/data-binding)
+
+[Navigation Docs](https://developer.android.com/guide/navigation/)
+
 [BaseFragment Docs](https://developer.android.com/reference/androidx/leanback/app/BaseFragment)
 
+# Features
 
 Efficiently track and manage all user expenses.
 Send notifications when the user's monthly income limit is reached.
@@ -27,21 +38,21 @@ Provide access to previous expense history.
 Automatically assign dates to each expense entry.
 Display the remaining balance calculated from total income and expenses.
  
-- # Tech Stack
-- Kotlin
-- XML (UI Design)
-- Firebase
-- MVVM Architecture
+# Firestore
 
 - # Screenshots
-<img src="home&add.png" width="250"/>
+<img src="recreate.png" width="250"/>
 
+# Setup
+Requirements
 
-  # Installation
-1. Clone this repository  
-2. Open in Android Studio  
-3. Add your API key in Constants file  
-4. Run the projec
+Basic knowledge about Android Studio
+Basic knowledge about Firebase
+
+ # Project
+
+1. Download and open the project in Android Studio
+2. Connect your Android phone or use the emulator to start the application
 
  # Contact  
 Email: mdrayhan8045@gmail.com
