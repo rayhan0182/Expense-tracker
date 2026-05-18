@@ -1,17 +1,16 @@
 <img src="home&add.png" width="250"/>
 
-#Introduction  
-
+# Introduction  
 # A simple and efficient expense tracking app that enables users to manage their daily and monthly spending
 
 See below for more information.
 
 # Technologies & Architecture
 
-Technologies
+# Technologies
 Android, Kotlin
 
-Architecture
+# Architecture
 Model-View-ViewModel (MVVM)
 
 # Firebase
@@ -44,7 +43,7 @@ Display the remaining balance calculated from total income and expenses.
 <img src="recreate.png" width="250"/>
 
 # Setup
-Requirements
+# Requirements
 
 Basic knowledge about Android Studio
 Basic knowledge about Firebase
