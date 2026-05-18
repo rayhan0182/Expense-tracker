@@ -17,7 +17,7 @@ Display the remaining balance calculated from total income and expenses.
 - MVVM Architecture
 
 - # Screenshots
-<img src=home&add.png" width="250"/>
+<img src=pngresize.png" width="250"/>
 
 
   # Installation
