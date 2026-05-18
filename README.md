@@ -44,9 +44,8 @@ Display the remaining balance calculated from total income and expenses.
 
 # Setup
 # Requirements
-
-Basic knowledge about Android Studio
-Basic knowledge about Firebase
+1.Basic knowledge about Android Studio
+2.Basic knowledge about Firebase
 
  # Project
 
