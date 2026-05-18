@@ -1,8 +1,25 @@
-# App Name: Expense Tracker
+#Introduction
 
 # A simple and efficient expense tracking app that enables users to manage their daily and monthly spending
 
-# feature
+See below for more information.
+
+# Technologies & Architecture
+
+Technologies
+Android, Kotlin
+
+Architecture
+Model-View-ViewModel (MVVM)
+
+# Firebase
+Firebase Firestore
+
+# Architecture Components
+
+https://developer.android.com/reference/androidx/leanback/app/BaseFragment
+
+
 Efficiently track and manage all user expenses.
 Send notifications when the user's monthly income limit is reached.
 Sort expenses in descending order (highest to lowest) for better analysis.
